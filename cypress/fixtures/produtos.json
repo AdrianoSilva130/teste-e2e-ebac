@@ -1,0 +1,26 @@
+[
+    {
+        "nomeProduto": "Abominable Hoodie",
+        "tamanho": "XS",
+        "cor": "Green",
+        "quantidade": 1
+    },
+    {
+        "nomeProduto": "Chaz Kangeroo Hoodie",
+        "tamanho": "S",
+        "cor": "Black",
+        "quantidade": 1
+    },
+    {
+        "nomeProduto": "Geo Insulated Jogging Pant",
+        "tamanho": "34",
+        "cor": "Green",
+        "quantidade": 1
+        
+    },
+    {"nomeProduto": "Vulcan Weightlifting Tank",
+        "tamanho": "XS",
+        "cor": "Black",
+        "quantidade": 1
+}
+]

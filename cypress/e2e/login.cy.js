@@ -23,16 +23,16 @@ context('Funcionalidade Login', () => {
 
     it('Login usando fixture', () => {
         cy.fixture('perfil').then((dados) => {
-            cy.login(dados.usuario, dados.senha)
+        cy.login(dados.usuario, dados.senha , {log: false})
         })
-        cy.get('.page-title').should('contain', 'Minha conta')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, adriano.teste')
     });
 
-    it.skip('Deve fazer login com sucesso - sem otimização', () => {
-        cy.get('#username').type(dadosLogin.usuario)
-        cy.get('#password').type(dadosLogin.senha, { log: false })
+    it('Deve fazer login com sucesso - sem otimização', () => {
+        cy.get('#username').type('adriano.teste@teste.com.br')
+        cy.get('#password').type('senha@123')
         cy.get('.woocommerce-form > .button').click()
         cy.get('.page-title').should('contain', 'Minha conta')
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, aluno_ebac')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, adriano.teste')
     })
 })
