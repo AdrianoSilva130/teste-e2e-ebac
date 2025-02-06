@@ -15,6 +15,10 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
       cy.visit('http://lojaebac.ebaconline.art.br/')
   });
 
+  afterEach(() => {
+    cy.screenshot()
+  });
+
   it('Deve adicionar produto ao carrinho buscando da massa de dados', () => {
     produtosPage.visitarUrl()
     cy.fixture('produtos').then(dados => {
