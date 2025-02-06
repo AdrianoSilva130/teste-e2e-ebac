@@ -12,10 +12,11 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
       E validando minha compra ao final */
 
   beforeEach(() => {
-      produtosPage.visitarUrl()
+      cy.visit('http://lojaebac.ebaconline.art.br/')
   });
 
   it('Deve adicionar produto ao carrinho buscando da massa de dados', () => {
+    produtosPage.visitarUrl()
     cy.fixture('produtos').then(dados => {
         produtosPage.buscarProduto(dados[0].nomeProduto)
         produtosPage.addProdutoCarrinho(
@@ -23,28 +24,24 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             dados[0].cor, 
             dados[0].quantidade)
             cy.get('#tab-title-description > a').should('contain' , 'Descrição')
-            
         produtosPage.buscarProduto(dados[1].nomeProduto)
         produtosPage.addProdutoCarrinho(
             dados[1].tamanho, 
             dados[1].cor, 
              dados[1].quantidade)
-             cy.get('#tab-title-description > a').should('contain' , 'Descrição')
-        
+             cy.get('#tab-title-description > a').should('contain' , 'Descrição')   
         produtosPage.buscarProduto(dados[2].nomeProduto)
         produtosPage.addProdutoCarrinho(
             dados[2].tamanho, 
             dados[2].cor, 
             dados[2].quantidade)
             cy.get('#tab-title-description > a').should('contain' , 'Descrição')
-
             produtosPage.buscarProduto(dados[3].nomeProduto)
             produtosPage.addProdutoCarrinho(
                 dados[3].tamanho, 
                 dados[3].cor, 
                 dados[3].quantidade)
-                cy.get('#tab-title-description > a').should('contain' , 'Descrição')
-        })
+                cy.get('#tab-title-description > a').should('contain' , 'Descrição')})
         cy.get('.woocommerce-message > .button').click()
         cy.get('.checkout-button').click()
         cy.get('#billing_first_name').type(faker.person.firstName())
@@ -57,7 +54,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('.wc_payment_method.payment_method_cod > label').click()
         cy.get('#terms').click()
         cy.get('#place_order').click()
-        
+        cy.get('.woocommerce-notice').should('exist')
     });
 
 });
